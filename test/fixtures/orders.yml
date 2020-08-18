@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  state: 1
+  total: 1
+  emission: 1
+  client: one
+
+two:
+  number: 1
+  state: 1
+  total: 1
+  emission: 1
+  client: two

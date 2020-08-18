@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salesprice: 1
+  pricecost: 1
+  product: one
+
+two:
+  salesprice: 1
+  pricecost: 1
+  product: two
