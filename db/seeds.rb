@@ -9,7 +9,7 @@
 
 Company.create(name: 'Flopy Shoes');
 
-User.create(name: 'cristian',
+User.create(firstname: 'cristian',
             lastname: 'carrasco',
             role: 0,
             email: 'cris@example.com',

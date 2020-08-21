@@ -11,12 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<%= form_for @company do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name , 'Name Company'%>
+    <%= f.text_field :name%>
   </div>
 
-  <div class="actions">
+  <%= f.fields_for :users, @users do |form| %>
+
+    <%= form.label :firstname, 'First Name' %>
+    <%= form.text_field :firstname%>
+
+    <%= form.label :lastname, 'Last Name' %>
+    <%= form.text_field :lastname%>
+
+    <%= form.label :role, 'Role' %>
+    <%= form.text_field :role%>
+
+    <%= form.label :email, 'Email' %>
+    <%= form.email_field :email%>
+
+    <%= form.label :password, 'Password'%>
+    <%= form.password_field :password%>
+
+    <%= form.label :password_confirmation, 'Password Confirmation' %>
+    <%= form.password_field :password_confirmation%>
+
+  <% end %>
+
+  <div class="actions mt-3">
     <%= form.submit %>
   </div>
+  <% end %>
 <% end %>
