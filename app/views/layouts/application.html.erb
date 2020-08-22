@@ -24,14 +24,9 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
         <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
           <li class="nav-item active">
-            <a class="nav-link" href="<%= new_company_path %>">Registrarse como Empresa <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href= "<%= new_user_session_path %>">Log in<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign out' , destroy_user_session_path , method: :delete , class: "nav-link" %>
+            <a class="nav-link" href= "<%= new_user_path %>">Agregar usuario<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
@@ -44,13 +39,22 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
+
+          <li class="nav-item">
+            <%= link_to 'Sign out' , destroy_user_session_path , method: :delete , class: "nav-link" %>
+          </li>
+          <% else %>
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= new_company_path %>">Registrarse como Empresa <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href= "<%= new_user_session_path %>">Log in</a>
+          </li>
+
+          <% end %>
         </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
       </div>
     </nav>
-</div>
     <%= yield %>
   </body>
 </html>
