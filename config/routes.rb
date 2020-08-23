@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :products
   resources :prices
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, skip: :registrations
   resources :users
 
   resources :companies do
