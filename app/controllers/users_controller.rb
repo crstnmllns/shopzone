@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params.merge(company_id: current_user.company_id))
-    byebug
 
     respond_to do |format|
       if @user.save
@@ -38,8 +37,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -58,8 +56,6 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-
-
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -68,13 +64,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:firstname, :lastname, :role, :email, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :role, :email, :password, :password_confirmation)
+  end
 end

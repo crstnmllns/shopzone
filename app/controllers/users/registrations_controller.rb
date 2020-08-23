@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
   #  super
-  byebug
   end
 
   # GET /resource/edit
