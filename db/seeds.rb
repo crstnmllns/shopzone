@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
+Product.delete_all
+Category.delete_all
 Company.delete_all
 
 Company.create(name: 'Flopy Shoes');

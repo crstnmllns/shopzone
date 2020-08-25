@@ -15,6 +15,7 @@ class PricesController < ApplicationController
   # GET /prices/new
   def new
     @price = Price.new
+    @products = Product.where(company_id: current_user.company_id)
   end
 
   # GET /prices/1/edit
@@ -25,6 +26,7 @@ class PricesController < ApplicationController
   # POST /prices.json
   def create
     @price = Price.new(price_params)
+
 
     respond_to do |format|
       if @price.save

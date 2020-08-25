@@ -21,9 +21,9 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
         <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && current_user.admin! %>
           <li class="nav-item active">
-            <a class="nav-link" href= "<%= new_user_path %>">Agregar usuario<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href= "<%= users_path %>">Agregar usuario<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href= "<%= new_category_path %>">Agregar Categorias<span class="sr-only">(current)</span></a>
@@ -43,11 +43,13 @@
           </li>
 
           <% end %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+
         </ul>
       </div>
     </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <br>
     <%= yield %>
   </body>
 </html>

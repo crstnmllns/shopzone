@@ -2,7 +2,7 @@
 
 <h1>Users</h1>
 
-<table>
+<table id="users">
   <thead>
     <tr>
       <th>Name</th>
@@ -11,17 +11,11 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.fullname %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render @users %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
+<div id="new-users">
+    <%= link_to 'New User', new_user_path, remote: true %>
+</div>

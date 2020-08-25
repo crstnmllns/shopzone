@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= form.select :product_id, @products.map{|prod|[prod.name ,prod.id] },prompt:"Seleccione una opción.."%>
   </div>
 
   <div class="actions">

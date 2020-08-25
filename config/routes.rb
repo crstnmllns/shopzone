@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  
+  devise_for :users, controllers: { registrations: 'users' }
   resources :categories
   resources :order_items
   resources :orders
   resources :products
   resources :prices
-  devise_for :users, skip: :registrations
   resources :users
   resources :companies
+  resource :cart, only: [:show, :update]
 
-  root 'products#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'home#index'
 end
