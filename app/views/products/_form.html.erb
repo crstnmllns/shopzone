@@ -22,19 +22,33 @@
   </div>
 
   <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :stock %>
-  </div>
-
-  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
+    <%= form.label :stock %>
+    <%= form.number_field :stock %>
   </div>
+
+  <div class="field">
+    <%= form.label :categories %>
+        <%= form.collection_check_boxes(:category_ids, Category.where(company_id: current_user.company_id), :id, :name) do |b| %>
+        <%= b.label class:"label-checkbox" do %>
+            <%= b.check_box + b.text%>
+        <% end %>
+    <% end %>
+  </div>
+
+  <%= form.fields_for :prices, @products do |f| %>
+
+    <%= f.label :salesprice, 'Sales Price' %>
+    <%= f.number_field :salesprice%>
+
+    <%= f.label :pricecost, 'Price Cost ' %>
+    <%= f.number_field :pricecost%>
+
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
