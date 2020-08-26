@@ -20,7 +20,7 @@ def current_order
 
   protected
   def authenticate_admin!
-    unless current_user.present? && current_user.role == 'digitador'
+    unless current_user.present? && current_user.role == 'admin'
       flash[:danger] = "No tienes autorización para entrar en esa sección"
       redirect_to root_path
     end

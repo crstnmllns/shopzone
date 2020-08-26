@@ -10,7 +10,7 @@
                 <h5 class="card-title"><%= product.name %></h5>
                 <div class="card-text">
                   <div class="badge badge-primary"><%= product.categories.first.name %></div>
-                  <div>$<%= product.prices%></div>
+                  <div>$<%= product.prices.map(&:salesprice).last%></div>
                 </div>
                 <div class="row float-right">
                   <div class="col-md-12">

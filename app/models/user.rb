@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company
-  validates :firstname,:lastname, :presence: true
+  validates :firstname,:lastname, presence: true
 
   enum role: [:admin , :digitador]
 
