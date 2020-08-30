@@ -1,0 +1,8 @@
+<tr scope="row">
+  <td><%= price.product.name %></td>
+  <td><%= price.salesprice %></td>
+  <td><%= price.pricecost %></td>
+  <td><%= link_to 'Update', edit_price_path(price), class: 'btn-sm btn-success text-white text-decoration-none'%>
+      <%= link_to 'Destroy', price, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete btn-sm btn-danger text-white text-decoration-none" %>
+  </td>
+</tr>
