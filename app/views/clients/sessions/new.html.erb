@@ -1,7 +1,7 @@
 <div class="container login-container">
   <div class="row">
     <div class="col-md-6 login-form bg-dark">
-      <h3>Login User</h3>
+      <h3>Login Client</h3>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.label :email %><br />
@@ -23,7 +23,7 @@
         <%= f.submit "Log in", class: "btn btn-block mybtn btn-primary tx-tfm" %>
       </div>
       <% end %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+      <%= render "clients/shared/links" %>
     </div>
   </div>
 </div>

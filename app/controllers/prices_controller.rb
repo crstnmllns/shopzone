@@ -1,6 +1,6 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /prices
   # GET /prices.json
   def index
@@ -20,7 +20,7 @@ class PricesController < ApplicationController
 
   # GET /prices/1/edit
   def edit
-    
+
   end
 
   # POST /prices
@@ -46,6 +46,7 @@ class PricesController < ApplicationController
   def update
     respond_to do |format|
       if @price.update(price_params)
+        format.js
         format.html { redirect_to @price, notice: 'Price was successfully updated.' }
         format.json { render :show, status: :ok, location: @price }
       else
@@ -60,6 +61,7 @@ class PricesController < ApplicationController
   def destroy
     @price.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to prices_url, notice: 'Price was successfully destroyed.' }
       format.json { head :no_content }
     end

@@ -5,9 +5,9 @@
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-md-3">
-            <div class="card">
-              <div class="card-img-top">
-                <%=  image_tag product.image.variant(resize: "350x200") %>
+            <div class="card" style="width: 14rem; height:40%;">
+              <div class="card-img-top" >
+                <%=  image_tag product.image.variant(combine_options: { resize: "224x165>", extent: "224x164", background: "#393E40", gravity: "center"}).processed %>
               </div>
               <div class="card-block">
                 <h5 class="card-title"><%= product.name %></h5>
