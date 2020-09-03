@@ -10,9 +10,12 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+        super
+    if @client.save
+      ClientNotifierMailer.send_signup_email(@client).deliver
+    end
+  end
 
   # GET /resource/edit
   # def edit

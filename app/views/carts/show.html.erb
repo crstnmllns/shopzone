@@ -1,9 +1,45 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<div class="container">
+  <div class="card">
+      <div class="card-header bg-dark text-light">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <a href="<%= root_url%>" class="btn btn-outline-info btn-sm pull-right">Continue Shopping</a>
+          <div class="clearfix"></div>
+      </div>
+      <div class="card-body">
+        <% @order.order_items.includes(:product).each do |item| %>
+          <div class="row">
+              <div class="col-xs-2 col-md-2">
+                  <%=  image_tag item.product.image.variant(resize: "120x80").processed %>
+              </div>
+              <div class="col-xs-4 col-md-6">
+                <h4 class="product-name"><strong><%= item.product.name %></strong></h4><h4><small><%= item.product.description %></small></h4>
+              </div>
+              <div class="col-xs-6 col-md-4 row">
+                  <div class="col-xs-6 col-md-6 text-right" style="padding-top: 5px">
+                    <h6><strong><%= item.unit_price%> <span class="text-muted">x</span></strong></h6>
+                  </div>
+                  <div class="col-xs-4 col-md-4">
+                    <%= item.quantity %>
+                  </div>
+                  <div class="">
+                    <%= link_to 'Destroy', item , method: :delete, data: { confirm: 'Are you sure?'}, class: "delete btn-sm btn-danger text-white text-decoration-none" %>
+                  </div>
+              </div>
+          </div>
 
-<%= @order_items.each do |item|%>
-  <h3><%= item.product.name %></h3>
-  <h5><%= item.product.price.map(&:salesprice).last%></h5>
+          <hr>
+        <% end %>
 
-  
-<% end %>
+      </div>
+      <div class="card-footer">
+          <a href="#" class="btn btn-success pull-right">Pay</a>
+        
+
+          <div class="pull-right" style="margin: 5px">
+            Total: <b><%= number_to_currency @order.total %></b>
+            <%= link_to 'Empty Cart', @cart, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger text-white text-decoration-none"%>
+          </div>
+      </div>
+  </div>
+
+</div>

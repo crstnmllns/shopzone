@@ -69,3 +69,8 @@ end
 gem 'devise'
 
 gem 'rails-erd'
+
+gem 'sendgrid-ruby'
+
+gem 'chartkick'
+gem 'groupdate'

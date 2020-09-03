@@ -2,8 +2,9 @@ class Order < ApplicationRecord
   before_create -> { generate_number(hash_size) }
 
   belongs_to :client
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :products , through: :order_items
+  enum state: [:created,:pay]
 
   validates :number, uniqueness: true
 
@@ -32,18 +33,20 @@ class Order < ApplicationRecord
     p = prices.last
 
 
-    if product && (product.stock > 0 && p  )
-      order_items.create(product_id: product.id, quantity: quantity, price: p.salesprice)
+    if product && (product.stock > 0 ) && p
+      order_items.create(product_id: product.id, quantity: quantity, unit_price: p.salesprice)
       compute_total
     end
+  end
 
-
+  def update_product()
   end
 
   def compute_total
     sum = 0
     order_items.each do |item|
-      sum += item.price
+      total_price = item.unit_price * item.quantity
+      sum += total_price
     end
     update_attribute(:total, sum)
   end

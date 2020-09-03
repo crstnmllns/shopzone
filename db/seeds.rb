@@ -13,4 +13,8 @@ User.create(firstname: 'cristian',
             password: '123456',
             company_id: 1);
 
+Category.create(name: "Smartphones", company_id: 1)
+Category.create(name: "Shoes" , company_id: 1)
+Category.create(name: "Accesories", company_id: 1)
+
 # Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }

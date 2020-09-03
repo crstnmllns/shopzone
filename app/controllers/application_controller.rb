@@ -8,6 +8,17 @@ protected
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :role])
   end
 
+  def current_order
+    if current_client
+      order = Order.where(client_id: current_client.id).where(state: "created").last
+      if order.nil?
+        order = Order.create(client: current_client, state: :created)
+      end
+      return order
+    end
+    nil
+  end
+
   protected
 
   def authenticate_admin!

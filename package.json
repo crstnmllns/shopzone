@@ -2,6 +2,7 @@
   "name": "ShopZone",
   "private": true,
   "dependencies": {
+    "highcharts": "^8.2.0",
     "jquery": "^3.5.1"
   }
 }

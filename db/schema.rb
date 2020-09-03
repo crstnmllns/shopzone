@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_191608) do
   create_table "order_items", force: :cascade do |t|
     t.integer "quantity"
     t.decimal "unit_price"
-    t.decimal "total"
     t.bigint "product_id"
     t.bigint "order_id"
     t.datetime "created_at", null: false
@@ -86,7 +85,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_191608) do
   create_table "orders", force: :cascade do |t|
     t.integer "number"
     t.integer "state"
-    t.decimal "subtotal"
     t.decimal "total"
     t.integer "emission"
     t.bigint "client_id"
