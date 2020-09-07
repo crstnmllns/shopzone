@@ -5,11 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company
-
   enum role: [:admin , :digitador]
 
   def fullname
     "#{firstname} #{lastname}"
   end
-  
+
 end
