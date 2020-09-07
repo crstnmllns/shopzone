@@ -71,6 +71,7 @@ gem 'devise'
 gem 'rails-erd'
 
 gem 'sendgrid-ruby'
+gem 'sendgrid-actionmailer'
 
 gem 'chartkick'
 gem 'groupdate'

@@ -32,11 +32,9 @@
 
       </div>
       <div class="card-footer">
-          <a href="#" class="btn btn-success pull-right">Pay</a>
-        
+
 
           <div class="pull-right" style="margin: 5px">
-            Total: <b><%= number_to_currency @order.total %></b>
             <%= link_to 'Empty Cart', @cart, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger text-white text-decoration-none"%>
           </div>
       </div>

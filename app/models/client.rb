@@ -6,6 +6,8 @@ class Client < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :orders
 
+  before_create :assign_first_order
+
   def self.from_omniauth(access_token)
     data = access_token.info
     client = Client.where(email: data['email']).first
@@ -15,5 +17,9 @@ class Client < ApplicationRecord
         )
     end
     client
+  end
+
+  def assign_first_order
+    self.orders.build(state: :created)
   end
 end

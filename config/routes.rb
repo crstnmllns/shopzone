@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :companies
   resources :order_items
+  resources :orders
 
 
   resource :cart, only: [:show, :update,:destroy]
