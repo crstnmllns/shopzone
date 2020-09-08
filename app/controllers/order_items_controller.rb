@@ -11,9 +11,8 @@ class OrderItemsController < ApplicationController
 
   def destroy
     @order = current_client.orders.where.not(state: :disabled)
-    @order_item = @order.order_items.find(params[:id])
+    @order_item = Order.order_items.find(params[:id])
     @order_item.destroy
-
     respond_to do |format|
       format.html {redirect_to cart_path(@order), notice: 'Item successfuly removed'}
       format.json { head :no_content}
