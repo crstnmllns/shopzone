@@ -13,7 +13,17 @@ protected
   def authenticate_admin!
     unless current_user.present? && current_user.role == 'admin'
       flash[:danger] = "No tienes autorización para entrar en esa sección"
-      redirect_to root_path
+      redirect_to products_path
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    if current_client
+      root_path
+    elsif current_user
+      products_path
+    else
+      super
     end
   end
 end

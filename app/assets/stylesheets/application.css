@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+.client-email {
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  align-self: flex-end;
+}
+
+body{
+    font-family: 'Russo One', sans-serif;
+}

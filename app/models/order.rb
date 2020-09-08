@@ -33,10 +33,8 @@ class Order < ApplicationRecord
 
 
     if product && (product.stock > 0 && p  )
-      byebug
-      order_items.create(product_id: product.id, quantity: quantity, price: :price)
+      order_items.create(product_id: product.id, quantity: quantity, price: p.salesprice)
       compute_total
-
     end
 
 

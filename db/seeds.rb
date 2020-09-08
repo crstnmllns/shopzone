@@ -6,5 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Company.create(name: 'Flopy Shoes');
+User.create(firstname: 'cristian',
+            lastname: 'carrasco',
+            role: 0,
+            email: 'cris@example.com',
+            password: '123456',
+            company_id: 1);
 
-Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
+# Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
