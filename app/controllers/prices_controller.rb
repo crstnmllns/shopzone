@@ -20,6 +20,7 @@ class PricesController < ApplicationController
 
   # GET /prices/1/edit
   def edit
+    
   end
 
   # POST /prices
@@ -30,6 +31,7 @@ class PricesController < ApplicationController
 
     respond_to do |format|
       if @price.save
+        format.js
         format.html { redirect_to @price, notice: 'Price was successfully created.' }
         format.json { render :show, status: :created, location: @price }
       else

@@ -5,6 +5,11 @@
   <%= @product.name %>
 </p>
 
+<strong>Pricture:</strong>
+<div style="width:200px; height:auto">
+  <%= image_tag(@product.image, style:'width:70%')%>
+</div>
+
 <p>
   <strong>Sku:</strong>
   <%= @product.sku %>

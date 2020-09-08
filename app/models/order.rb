@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   before_create -> { generate_number(hash_size) }
+
   belongs_to :client
   has_many :order_items
   has_many :products , through: :order_items
@@ -27,10 +28,18 @@ class Order < ApplicationRecord
 
   def add_product(product_id, quantity)
     product = Product.find(product_id)
-    if product && (product.stock > 0)
-      order_items.create(product_id: product.id, quantity: quantity, price: product.price)
+    prices = Price.where(product_id: product.id)
+    p = prices.last
+
+
+    if product && (product.stock > 0 && p  )
+      byebug
+      order_items.create(product_id: product.id, quantity: quantity, price: :price)
       compute_total
+
     end
+
+
   end
 
   def compute_total

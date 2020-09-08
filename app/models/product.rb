@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :company
+  has_one_attached :image
   has_many :order_items
   has_many :orders , through: :order_items
 
@@ -10,5 +11,6 @@ class Product < ApplicationRecord
   has_many :categories, through: :category_products
 
   validates :name, :sku, :description, :stock, presence: true
+
 
 end

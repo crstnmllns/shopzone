@@ -1,15 +1,15 @@
 class CartsController < ApplicationController
+  
+    def update
+      product = params[:cart][:product_id]
+      quantity = params[:cart][:quantity]
 
-  def update
-    product = params[:cart][:product_id]
-    quantity = params[:cart][:quantity]
+      current_order.add_product(product, quantity)
 
-    current_order.add_product(product, quantity)
+      redirect_to root_url, notice: "Product added successfuly"
+    end
 
-    redirect_to root_url, notice: "Product added successfuly"
+    def show
+      @order = current_order
+    end
   end
-
-  def show
-    @order = current_order
-  end
-end

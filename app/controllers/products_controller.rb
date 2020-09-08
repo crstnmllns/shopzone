@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /products
   # GET /products.json
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        format.js
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -43,6 +45,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+        format.js
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -57,6 +60,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
+      format.js
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -70,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :sku, :stock, :description, :company_id, category_ids: [], prices_attributes: [:salesprice, :pricecost])
+      params.require(:product).permit(:name, :image, :sku, :stock, :description, :company_id, category_ids: [], prices_attributes: [:salesprice, :pricecost])
     end
 end

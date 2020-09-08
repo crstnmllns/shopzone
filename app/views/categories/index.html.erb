@@ -1,27 +1,28 @@
 <p id="notice"><%= notice %></p>
+<div class="main">
+  <h3>Add to new category</h3>
+  <div class="container">
+    <div class="row">
+        <div class="container col-md-6 ">
+          <div class="table-responsive" data-pattern="priority-columns">
+            <table  id="cat" class="table table-hover" >
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= render @categories %>
+                </tbody>
+              </table>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-6" id="new-cat">
+            <%= link_to 'Add Category', new_category_path, remote: true , class: 'btn btn-success btn-lg text-white text-decoration-none ' %>
+        </div>
+    </div>
+  </div>
 
-<h1>Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+</div>

@@ -1,4 +1,4 @@
-<%= form_with(model: product, local: true) do |form| %>
+<%= form_with(model: product) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -10,47 +10,78 @@
       </ul>
     </div>
   <% end %>
+  <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">Create product</div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="col">
+            <div class="file-upload">
+              <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+              <div class="image-upload-wrap">
+                <%= form.file_field :image , class: "file-upload-input", onchange: "readURL(this)", accept: "image/*"  %>
+                <div class="drag-text">
+                  <h3>file or select add Image</h3>
+                </div>
+              </div>
+              <div class="file-upload-content">
+                <img class="file-upload-image" src="#" alt="your image" />
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <%= form.label :name, 'Product Name' %>
+              <%= form.text_field :name , class: "form-control"   %>
+            </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+            <div class="form-group">
+              <%= form.label :sku, 'SKU' %>
+              <%= form.text_field :sku , class: "form-control"   %>
+            </div>
+
+
+            <div class="form-group">
+              <%= form.label :description, 'Description' %>
+              <%= form.text_area :description , class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :categories, 'Category' %>
+              <%= form.collection_check_boxes(:category_ids, Category.where(company_id: current_user.company_id), :id, :name) do |b| %>
+              <%= b.label class:"label-checkbox" do %>
+              <%= b.check_box + b.text%>
+              <% end %>
+              <% end %>
+            </div>
+
+          </div>
+          <div class="col">
+
+            <div class="form-group">
+              <%= form.label :stock, 'Stock' %>
+              <%= form.number_field :stock , class: "form-control"   %>
+            </div>
+
+
+              <%= form.fields_for :prices do |form| %>
+              <div class="form-group">
+                <%= form.label :salesprice %>
+                <%= form.number_field :salesprice , class: "form-control"%>
+              </div>
+
+              <div class="form-group">
+                <%= form.label :pricecost %>
+                <%= form.number_field :pricecost , class: "form-control" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
+        <div class="actions" align="center">
+          <%= form.submit :submit, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :sku %>
-    <%= form.text_field :sku %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :stock %>
-  </div>
-
-  <div class="field">
-    <%= form.label :categories %>
-        <%= form.collection_check_boxes(:category_ids, Category.where(company_id: current_user.company_id), :id, :name) do |b| %>
-        <%= b.label class:"label-checkbox" do %>
-            <%= b.check_box + b.text%>
-        <% end %>
-    <% end %>
-  </div>
-
-  <%= form.fields_for :prices, @products do |f| %>
-
-    <%= f.label :salesprice, 'Sales Price' %>
-    <%= f.number_field :salesprice%>
-
-    <%= f.label :pricecost, 'Price Cost ' %>
-    <%= f.number_field :pricecost%>
-
   <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
