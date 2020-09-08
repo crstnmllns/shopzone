@@ -34,10 +34,8 @@
             <%= form.password_field :password , class: "form-control" %>
           </div>
 
-          <div class="form-group">
-            <%= form.label :role, 'Role' %>
-            <%= form.select :role, User.roles.keys.to_a , class: "form-control" %>
-          </div>
+
+            <%= form.hidden_field :role, value: :admin %>
         </div>
 
         <div class="col-3">
