@@ -19,7 +19,7 @@ protected
     if client_signed_in?
       root_path
     elsif user_signed_in?
-      products_path
+      dashboard_index_path
     else
       super
     end
