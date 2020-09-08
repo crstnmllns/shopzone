@@ -4,5 +4,9 @@
   "dependencies": {
     "highcharts": "^8.2.0",
     "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0"
   }
 }

@@ -75,3 +75,4 @@ gem 'sendgrid-actionmailer'
 
 gem 'chartkick'
 gem 'groupdate'
+gem 'highcharts-rails'
