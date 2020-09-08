@@ -11,37 +11,62 @@
     </div>
   <% end %>
 
-<%= form_for @company do |f| %>
+  <div class="row">
 
-  <div class="form-group">
-    <%= f.label :name , 'Name Company'%>
-    <%= f.text_field :name%>
-  </div>
+    <div class="container" >
+      <h3 class="pl-5">New Company</h3>
+      <div class="form-row" >
+        <%= form_for @company do |f| %>
+        <div class="col-3">
+          <div class="form-group">
+            <%= f.label :name , 'Name Company'%>
+            <%= f.text_field :name , class: "form-control" %>
+          </div>
 
-  <%= f.fields_for :users, @users do |form| %>
+          <%= f.fields_for :users, @users do |form| %>
+          <div class="form-group">
+            <%= form.label :firstname, 'First Name' %>
+            <%= form.text_field :firstname , class: "form-control" %>
+          </div>
 
-    <%= form.label :firstname, 'First Name' %>
-    <%= form.text_field :firstname%>
+          <div class="form-group">
+            <%= form.label :password, 'Password'%>
+            <%= form.password_field :password , class: "form-control" %>
+          </div>
 
-    <%= form.label :lastname, 'Last Name' %>
-    <%= form.text_field :lastname%>
+          <div class="form-group">
+            <%= form.label :role, 'Role' %>
+            <%= form.select :role, User.roles.keys.to_a , class: "form-control" %>
+          </div>
+        </div>
 
-    <%= form.label :role, 'Role' %>
-    <%= form.select :role, User.roles.keys%>
+        <div class="col-3">
+          <div class="form-group">
+            <%= form.label :email, 'Email' %>
+            <%= form.email_field :email , class: "form-control" %>
+          </div>
 
-    <%= form.label :email, 'Email' %>
-    <%= form.email_field :email%>
+          <div class="form-group">
+            <%= form.label :lastname, 'Last Name' %>
+            <%= form.text_field :lastname , class: "form-control" %>
+          </div>
 
-    <%= form.label :password, 'Password'%>
-    <%= form.password_field :password%>
+          <div class="form-group">
+            <%= form.label :password_confirmation, 'Password Confirmation' %>
+            <%= form.password_field :password_confirmation , class: "form-control" %>
+          </div>
+        </div>
 
-    <%= form.label :password_confirmation, 'Password Confirmation' %>
-    <%= form.password_field :password_confirmation%>
+        <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="actions">
+        <%= form.submit :submit, class: "btn btn-success"%>
+      </div>
+    </div>
 
+
+    <% end %>
   <% end %>
-
-  <div class="actions mt-3">
-    <%= form.submit %>
-  </div>
-  <% end %>
-<% end %>

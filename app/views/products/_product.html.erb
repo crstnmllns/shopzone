@@ -1,14 +1,25 @@
 <tr>
   <div class="row" >
     <div class="col-md-3 mb-3 mr-2">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="https://dummyimage.com/600x400/c7c7c7/737373&text=image" alt="<%= product.name%>">
+      <div class="double card" style="width: 14rem; height:40%;">
+        <div class="card-img-top" >
+          <%=  image_tag product.image.variant(combine_options: { resize: "224x165>", extent: "224x164", background: "#393E40", gravity: "center"}).processed %>
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= product.name %></h5>
           <p class="card-text"><%= product.sku %></p>
           <p class="card-text"><%= product.stock %></p>
-          <p class="card-text"><%= product.prices.map(&:salesprice).last %></p>
-          <p class="card-text"><%= product.prices.map(&:pricecost).last %></p>
+          <div class="row mb-3">
+            <div class="col-6">
+                <p class="card-text">Salesprice</p>
+                <p class="salesprices card-text">$<%= product.prices.map(&:salesprice).last %></p>
+            </div>
+            <div class="col-6">
+              <p class="card-text">Pricecost</p>
+                <p class="pricecost card-text">$<%= product.prices.map(&:pricecost).last %></p>
+            </div>
+          </div>
+
           <%= link_to 'Update', edit_product_path(product), class: 'btn-sm btn-success text-white text-decoration-none' %>
           <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "delete btn-sm btn-danger text-white text-decoration-none" %>
         </div>

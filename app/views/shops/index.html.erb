@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-10 offset-1">
     <div class="container">
@@ -5,7 +6,9 @@
         <% @products.each do |product| %>
           <div class="col-md-3">
             <div class="card">
-              <img class="card-img-top" src="https://dummyimage.com/600x400/c7c7c7/737373&text=image" alt="<%= product.name%>"/>
+              <div class="card-img-top">
+                <%=  image_tag product.image.variant(resize: "350x200") %>
+              </div>
               <div class="card-block">
                 <h5 class="card-title"><%= product.name %></h5>
                 <div class="card-text">
