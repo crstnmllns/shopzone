@@ -24,3 +24,10 @@
 body{
     font-family: 'Russo One', sans-serif;
 }
+
+.icon-nav {
+  color: white;
+  margin-left: auto;
+  font-size: 1rem;
+
+}

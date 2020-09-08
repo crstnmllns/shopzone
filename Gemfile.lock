@@ -61,6 +61,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (3.3.1)
     childprocess (3.0.0)
     choice (0.2.0)
     chromedriver-helper (2.1.1)
@@ -92,6 +93,8 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.0.0)
+      activesupport (>= 5)
     hashie (4.1.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
@@ -187,6 +190,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby_dep (1.5.0)
+    ruby_http_client (3.5.1)
     rubyzip (2.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -202,6 +206,11 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sendgrid-actionmailer (3.1.0)
+      mail (~> 2.7)
+      sendgrid-ruby (~> 6.0)
+    sendgrid-ruby (6.3.4)
+      ruby_http_client (~> 3.4)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -243,10 +252,12 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
+  chartkick
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  groupdate
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
@@ -258,6 +269,8 @@ DEPENDENCIES
   rails-erd
   sass-rails (~> 5.0)
   selenium-webdriver
+  sendgrid-actionmailer
+  sendgrid-ruby
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

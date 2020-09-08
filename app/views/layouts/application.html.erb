@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
@@ -25,32 +25,34 @@
 
             <% if user_signed_in? && current_user.role = 'admin'%>
             <h5 class="client-email mr-3">Bienvenido <%=current_user.email%></h5>
+
             <li class="nav-item active">
-              <a class="nav-link" href= "<%= users_path %>">Agregar usuario<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href= "<%= categories_path %>">Agregar Categorias<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href= "<%= products_path %>">Agregar Productos<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href= "<%= dashboard_index_path %>"><i class="fas fa-shopping-bag icon-nav mr-1"></i>My Dashboard<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <%= link_to 'Sign out' , destroy_user_session_path , method: :delete , class: "nav-link" %>
             </li>
             <% elsif client_signed_in? %>
             <h5 class="client-email mr-3">Bienvenido <%=current_client.email%></h5>
+            <li class="nav-item active">
+              <a class="nav-link" href= "<%= cart_path %>"><i class="fa fa-shopping-cart icon-nav mr-1" aria-hidden="true"></i>Cart<span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item">
               <%= link_to 'Sign out' , destroy_client_session_path , method: :delete , class: "nav-link" %>
             </li>
             <% else %>
             <li class="nav-item active">
-              <a class="nav-link" href="<%= new_company_path %>">Registrarse como Empresa <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="<%= new_company_path %>">Sign up as company <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link" href= "<%= new_user_session_path %>">Log Company</a>
-            <li class="nav-item active">
-                <a class="nav-link" href= "<%= new_client_session_path %>">Log in Client</a>
-            </li>
+            <div class="dropdown show">
+              <a class="btn btn-info dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Log In
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="<%= new_user_session_path %>">Company</a>
+                <a class="dropdown-item" href="<%= new_client_session_path %>">Client</a>
+              </div>
+            </div>
             <% end %>
           </ul>
         </div>
@@ -60,6 +62,7 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
+
     <%= yield %>
   </body>
 </html>

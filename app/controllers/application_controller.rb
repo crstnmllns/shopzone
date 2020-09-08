@@ -8,19 +8,17 @@ protected
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :role])
   end
 
-  protected
-
   def authenticate_admin!
-    unless current_user.present? && current_user.role == 'admin'
+    unless user_signed_in? && current_user.role == 'admin'
       flash[:danger] = "No tienes autorización para entrar en esa sección"
       redirect_to products_path
     end
   end
 
   def after_sign_in_path_for(resource)
-    if current_client
+    if client_signed_in?
       root_path
-    elsif current_user
+    elsif user_signed_in?
       products_path
     else
       super
