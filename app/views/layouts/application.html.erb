@@ -21,7 +21,7 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
         <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? && current_user.admin! %>
+          <% if user_signed_in? && current_user.role = 'admin' %>
           <li class="nav-item active">
             <a class="nav-link" href= "<%= users_path %>">Agregar usuario<span class="sr-only">(current)</span></a>
           </li>

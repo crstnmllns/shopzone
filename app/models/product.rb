@@ -9,6 +9,6 @@ class Product < ApplicationRecord
   has_many :category_products, dependent: :destroy
   has_many :categories, through: :category_products
 
-  validates :name, :sku, :description, :stock, :presence: true
+  validates :name, :sku, :description, :stock, presence: true
 
 end
