@@ -18,4 +18,5 @@ class Order < ApplicationRecord
   def compute_total
     order_items.sum { |item| item.unit_price * item.quantity }
   end
+  
 end

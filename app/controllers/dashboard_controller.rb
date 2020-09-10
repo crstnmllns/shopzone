@@ -4,4 +4,12 @@ class DashboardController < ApplicationController
   def index
       @user = User.all
   end
+
+  def show
+
+  end
+  
+  def order
+      @orders = Order.all
+  end
 end

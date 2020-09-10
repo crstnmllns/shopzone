@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_client!, except: :show
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(client_id: current_client.id, state: :payed)
+
+
   end
 
   # GET /orders/1
@@ -40,11 +43,17 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    respond_to do |format|
 
+
+    respond_to do |format|
       if @order.update(order_params)
+
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
+
+        if @order.payed!
+          Order.new
+        end
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }

@@ -13,7 +13,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
     @order_item.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Order item was successfully destroyed.' }
+      format.html { redirect_to cart_path, notice: 'Order item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="container">
+  <div class="row">
+    <h1>Orders</h1>
+      <div class="container col-md-12 ">
+        <div class="table-responsive" data-pattern="priority-columns">
+          <table class="table table-hover" id="users" >
+              <thead class="thead-dark">
+                <tr>
+                  <th>Number</th>
+                  <th>Client</th>
+                  <th data-priority="1">State</th>
+                  <th data-priority="2">Total</th>
+                  <th data-priority="3">Date</th>
+                  <th data-priority="3">Time</th>
+                  <th data-priority="4">Options</th>
+                </tr>
+              </thead>
+
+            <tbody>
+              <% @orders.each do |order| %>
+                <tr>
+                  <td><%= order.id  %></td>
+                  <td><%= order.client.email  %></td>
+                  <td><%= order.state  %></td>
+                  <td><%= number_to_currency(order.compute_total , precision: 0) %></td>
+                  <td><%= order.created_at.strftime("%Y-%m-%d") %>
+                  <td><%= time_ago_in_words order.created_at %></td>
+                  <td><%= link_to 'Details', order %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+<br>

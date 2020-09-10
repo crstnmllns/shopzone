@@ -32,11 +32,14 @@
 
       </div>
       <div class="card-footer">
-
-
-          <div class="pull-right" style="margin: 5px">
+        <div class="row">
+          <div class="pull-right col-xs-2 col-md-3" style="margin: 5px">
+          <%= link_to 'Processed Pay', edit_order_path(@order) , class:"btn btn-success pull-right" %>
+          </div>
+          <div class="pull-right col-xs-2 col-md-3" style="margin: 5px">
             <%= link_to 'Empty Cart', @cart, method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger text-white text-decoration-none"%>
           </div>
+        </div>
       </div>
   </div>
 
