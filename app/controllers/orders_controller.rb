@@ -1,13 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_client!, except: :show
+  before_action :authenticate_client!, except: [:show,:index]
 
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.where(client_id: current_client.id, state: :payed)
-
-
   end
 
   # GET /orders/1

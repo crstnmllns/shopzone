@@ -18,5 +18,18 @@ class Order < ApplicationRecord
   def compute_total
     order_items.sum { |item| item.unit_price * item.quantity }
   end
-  
+
+  def self.search(search)
+    if search
+      state = Order.find_by(state: search)
+      if state
+        self.where(state: state)
+      else
+        Order.all
+      end
+    else
+      Order.all
+    end
+
+  end
 end
