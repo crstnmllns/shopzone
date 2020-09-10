@@ -73,7 +73,7 @@
     <h1 class="">Dashboard</h1>
     <h6>Quantity of products by category</h6>
     <%= pie_chart Category.joins(:products).group(:name).count , width: "500px", height: "350px" %>
-    <h6 class="mt-5">number of users created per day</h6>
+    <h6 class="mt-5">number of products created per day</h6>
     <%= column_chart Product.group_by_day_of_week(:created_at, format: "%a").count , width: "500px", height: "350px" %>
     <h6 class="mt-5">number of users created per day</h6>
     <%= line_chart User.group_by_day(:created_at).count , width: "500px", height: "350px"%>
