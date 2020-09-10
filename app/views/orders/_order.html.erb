@@ -1,4 +1,13 @@
 <%= form_for @order , method: :put do |f| %>
-  <%= f.hidden_field :state , value: :payed %>
-  <%= f.submit 'Pay', class:"btn btn-success pull-right"%>
+<div class="row">
+  <div class="col-md-6">
+    <%= f.hidden_field :state , value: :payed %>
+    <%= f.select :emission, options_for_select([['boleta'], ['factura']], :selected => f.object.emission) %>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.submit 'Pay', data: { confirm: 'Are you sure?'}, class:"btn btn-success pull-right"%>
+  </div>
+</div>
+
 <% end %>

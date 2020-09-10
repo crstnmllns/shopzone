@@ -10,14 +10,12 @@
           <h5>Client</h5>
           <h5>Date: </h5>
           <h5>State:</h5>
-          <h5>Emission:</h5>
 
         </div>
         <div class="col-xs-4 col-md-4 ">
           <h6><%= @order.client.email %></h6>
           <h6><%= @order.created_at.strftime("%Y-%m-%d") %></h6>
           <h6><%= @order.state %></h6>
-          <h6><%= @order.emission %></h6>
         </div>
       </div>
       <div class="card-body">
@@ -52,17 +50,8 @@
       <div class="card-footer">
         <div class="row">
           <div class="pull-right col-xs-2 col-md-3" style="margin: 5px">
-            <%= link_to 'Export PDF', orders_path , class: "btn btn-success text-white text-decoration-none"%>
+            <%= render 'order', order: @order %>
           </div>
-          <% if user_signed_in? %>
-          <div class="pull-right col-xs-2 col-md-1" style="margin: 5px">
-            <%= link_to 'Back', dashboard_order_path , class: "btn btn-danger text-white text-decoration-none"%>
-          </div>
-          <% else %>
-          <div class="pull-right col-xs-2 col-md-1" style="margin: 5px">
-            <%= link_to 'Back', orders_path , class: "btn btn-danger text-white text-decoration-none"%>
-          </div>
-          <% end %>
         </div>
       </div>
   </div>

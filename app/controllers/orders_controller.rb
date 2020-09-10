@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @orders = Order.all
   end
 
   # POST /orders
@@ -78,6 +79,6 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
 
     def order_params
-        params.require(:order).permit(:number, :state, :client_id)
+        params.require(:order).permit(:number, :state, :client_id, :emission)
     end
 end

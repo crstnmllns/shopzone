@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
   enum state: [:created,:payed,:disabled]
+  enum emission: [:boleta, :factura]
 
   def add_product(product_id, quantity)
     product = Product.find(product_id)
